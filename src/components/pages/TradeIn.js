@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Tabs, Tab, Row, Col, Button } from 'react-bootstrap';
-import CarSelectionSidebar from './CarSelectionSidebar.js'
+import CarSelectionSidebar from '../CarSelectionSidebar.js'
 
 class TradeIn extends Component {
     state = {  }

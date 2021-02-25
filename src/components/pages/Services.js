@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import './Services.css'
-import TradeIn from '../TradeIn.js';
+
+//pages
+import TradeIn from './TradeIn.js';
 import PaymentMethod from './PaymentMethod';
+import TradeInVehicle from './TradeInVehicle';
 
 class Service extends Component {
     state = {
         step: 1,
         tradein: false,
         paymentFinance: false,
+    }
+
+    handleTradeIn = () => {
+        this.setState({tradein: true})
     }
 
     nextStep = () => {
@@ -27,8 +34,7 @@ class Service extends Component {
 
         switch(step) {
             case 1:
-                return <TradeIn
-                        nextStep={this.nextStep}/>
+                return this.state.tradein ? <TradeInVehicle/> : <TradeIn nextStep={this.nextStep}/>
             case 2:
                 return <PaymentMethod />
             case 3:
