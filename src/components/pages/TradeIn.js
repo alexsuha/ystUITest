@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Tabs, Tab, Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import CarSelectionSidebar from '../CarSelectionSidebar.js'
+import ServiceTabs from '../ServiceTabs.js';
 
 class TradeIn extends Component {
     state = {  }
@@ -13,20 +14,15 @@ class TradeIn extends Component {
     render() { 
 
         return ( 
-            <div style={{paddingTop: 20, minHeight: "100vh"}}>
-                <div>
-                    <Tabs defaultActiveKey="trade-in">
-                        <Tab eventKey="trade-in" title="1. Trade-in" ></Tab>
-                        <Tab eventKey="cash-finance" title="2. Cash/Finance"></Tab>
-                        <Tab eventKey="delivery-methods" title="3. Delievery method" disabled></Tab>
-                        <Tab eventKey="review-payment" title="4. Review & Payment" disabled></Tab>
-                    </Tabs>
-                </div>
-
+            <div style={{minHeight: "100vh"}}>
+                <ServiceTabs
+                    tabValue={this.props.tabValue}
+                    onTabChange={this.props.onTabChange}
+                />
                 <Row style={{ height: "100vh" }}>
                     <Col md={9} style={{ backgroundColor: "#e9ecef" }}>
                         <div className="trade-in-container">
-                            <div className="trade-in-description" style={{paddingBottom: 20}}>
+                            <div style={{paddingBottom: 20}}>
                                 <h4>Save time and money by selling us your old car as part of your purchase</h4>
                             </div>
                             <div style={{display: "flex", justifyContent: "center", flexDirection: "column", width: 300}}>
@@ -35,13 +31,18 @@ class TradeIn extends Component {
                                 <div style={{marginBottom: 10}}>Get tax savings</div>
                                 <div>Effortless process</div>
                                 <br />
-                                <Button variant="primary" size="lg">Get offer</Button>
+                                <Button 
+                                    variant="primary"
+                                    size="lg"
+                                    onClick={this.onClickTradeInVehicle}>
+                                    Get offer
+                                </Button>
                                 <br />
                                 <Button 
-                                variant="outline-primary"
-                                size="lg"
-                                onClick={this.continue}>
-                                I don't have a trade-in
+                                    variant="outline-primary"
+                                    size="lg"
+                                    onClick={this.continue}>
+                                    I don't have a trade-in
                                 </Button>
                             </div>
                         </div>

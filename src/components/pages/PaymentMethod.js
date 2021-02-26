@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { Tabs, Tab, Row, Col, Button} from 'react-bootstrap';
+import { Row, Col, Button} from 'react-bootstrap';
 import Paper from '@material-ui/core/Paper';
 import CarSelectionSidebar from '../CarSelectionSidebar';
+import ServiceTabs from '../ServiceTabs';
 
 //icons
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 
+
 class PaymentMethod extends Component {
-    state = {  };
+    constructor(props) {
+        super(props);
+    }
 
     render() { 
         const cashAndFinance = {
@@ -36,17 +40,12 @@ class PaymentMethod extends Component {
             marginRight: 16
         }
         return (
-            <div style={{ paddingTop: 20 }}>
-                <div>
-                    <Tabs defaultActiveKey="cash-finance">
-                        <Tab eventKey="trade-in" title="1. Trade-in" ></Tab>
-                        <Tab eventKey="cash-finance" title="2. Cash/Finance"></Tab>
-                        <Tab eventKey="delivery-methods" title="3. Delievery method" disabled></Tab>
-                        <Tab eventKey="review-payment" title="4. Review & Payment" disabled></Tab>
-                    </Tabs>
-                </div>
-
-                <Row className="body-wrapper">
+            <div>
+                <ServiceTabs 
+                    tabValue={this.props.tabValue}
+                    onTabChange={this.props.onTabChange}
+                />
+                <Row>
                     <Col md={9} style={cashAndFinance}>
                         <div style={{ fontSize: 14 }}>What is your payment method? </div>
                         <div style={{ display: 'flex', justifyContent: 'center', height: "100vh"}}>
@@ -81,15 +80,15 @@ class PaymentMethod extends Component {
                                 <br/>
                                 <div>
                                     <Button 
-                                    variant="primary"
-                                    size="lg">
-                                    Continue with Finance
+                                        variant="primary"
+                                        size="lg">
+                                        Continue with Finance
                                     </Button>
                                 </div>
                             </Paper>
                             <Paper
-                            elevation={3}
-                            style={cardStyle}>
+                                elevation={3}
+                                style={cardStyle}>
                                 <div>
                                     <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}>
                                         <MonetizationOnIcon style={{ fontSize: 90 }} />
@@ -106,9 +105,10 @@ class PaymentMethod extends Component {
                                 <br />
                                 <div>
                                     <Button
-                                    variant="outline-primary"
-                                    size="lg">
-                                    Continue with Cash
+                                        variant="outline-primary"
+                                        size="lg"
+                                        onClick={this.props.nextStep}>
+                                        Continue with Cash
                                     </Button>
                                 </div>
                             </Paper>

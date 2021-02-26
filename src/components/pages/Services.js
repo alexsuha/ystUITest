@@ -8,7 +8,7 @@ import TradeInVehicle from './TradeInVehicle';
 
 class Service extends Component {
     state = {
-        step: 1,
+        step: 0,
         tradein: false,
         paymentFinance: false,
     }
@@ -17,9 +17,14 @@ class Service extends Component {
         this.setState({tradein: true})
     }
 
+    handleTabChange = (newValue) => {
+        this.setState({ step: newValue })
+    }
+
     nextStep = () => {
         this.setState({
             step: this.state.step + 1,
+
         })
     }
 
@@ -30,16 +35,28 @@ class Service extends Component {
     }
 
     render() {
-        const { step } = this.state;
 
-        switch(step) {
+        switch (this.state.step) {
+            case 0:
+                return this.state.tradein ? 
+                <TradeInVehicle 
+                    tabValue={this.state.step}
+                    onTabChange={this.handleTabChange}
+                /> :
+                <TradeIn 
+                    nextStep={this.nextStep}
+                    tabValue={this.state.step}
+                    onTabChange={this.handleTabChange}
+                />
             case 1:
-                return this.state.tradein ? <TradeInVehicle/> : <TradeIn nextStep={this.nextStep}/>
+                return  <PaymentMethod
+                            nextStep={this.nextStep}
+                            tabValue={this.state.step}
+                            onTabChange={this.handleTabChange}
+                        />
             case 2:
-                return <PaymentMethod />
-            case 3:
                 return <h1>Delivery method</h1>
-            case 4:
+            case 3:
                 return <h1>Review Payment</h1>
         }
  

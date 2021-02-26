@@ -1,30 +1,48 @@
 import React, { Component } from 'react';
-import { TextField, Paper } from '@material-ui/core';
-import { Tabs, Tab, Row, Col, Button } from 'react-bootstrap';
+import { TextField, Paper, FormControl, Select, MenuItem} from '@material-ui/core';
+import {  Row, Col, Button } from 'react-bootstrap';
+
+//components
 import CarSelectionSidebar from "../CarSelectionSidebar";
+import ServiceTabs from '../ServiceTabs';
 
 class TradeInVehicle extends Component {
-    render() { 
-        return (
-            <div style={{ paddingTop: 20, minHeight: "100vh" }}>
-                <div>
-                    <Tabs defaultActiveKey="trade-in">
-                        <Tab eventKey="trade-in" title="1. Trade-in" ></Tab>
-                        <Tab eventKey="cash-finance" title="2. Cash/Finance"></Tab>
-                        <Tab eventKey="delivery-methods" title="3. Delievery method" disabled></Tab>
-                        <Tab eventKey="review-payment" title="4. Review & Payment" disabled></Tab>
-                    </Tabs>
-                </div>
 
+    handleFormChange = input => e => {
+        this.setState({[input]: e.target.value});
+    }
+
+    render() {
+        return (
+            <div style={{minHeight: "100vh" }}>
+                <ServiceTabs
+                    tabValue={this.props.tabValue}
+                    onTabChange={this.props.onTabChange}
+                />
                 <Row style={{ height: "100vh" }}>
                     <Col md={9} style={{ backgroundColor: "#e9ecef", display: "flex", justifyContent: "center", paddingTop: 10}}>
                         <div style={{ paddingTop: 16 }}>
                             <Paper elevation={3} style={{ display: "flex", justifyContent: "center", alignItems: "center", height: 450, width: 870 }}>
-                                <div style={{display: "flex", flexDirection: "column", alignItems: "center",width: 715, height: 304}}>
-                                    {/* <div>Enter your VIN</div>
-                                    <div><TextField/></div>
-                                    <div>dropdown</div>
-                                    <Button className="primary disabled">Next</Button> */}
+                                <div style={{display: "flex", flexDirection: "column",justifyContent: "space-around",width: 715, height: 304}}>
+                                    <div>Enter your VIN</div>
+                                    <div>
+                                        <TextField id="outlined-basic" variant="outlined" style={{width: "100%"}} />
+                                        <p></p>
+                                    </div>
+                                    <div>
+                                        <FormControl variant="outlined" style={{ width: "100%", marginTop: 12, marginBottom: 12 }}>
+                                            <Select >
+                                                <MenuItem value="">
+                                                    <em>None</em>
+                                                </MenuItem>
+                                                <MenuItem value={10}>Ten</MenuItem>
+                                                <MenuItem value={20}>Twenty</MenuItem>
+                                                <MenuItem value={30}>Thirty</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                        
+                                    </div>
+                                    <Button className="primary disabled" style={{width: 300, alignSelf: "center"}}>Next</Button>
                                 </div>
                             </Paper>
                         </div>
