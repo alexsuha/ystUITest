@@ -74,7 +74,7 @@ function OptionCard(props) {
     const classes = useStyles();
     const { title, description, buttonText, icon, onClick, showLabel } = props;
 
-    return <Col className={classes.col}>
+    return <div className={classes.col}>
         {showLabel && <Paper
             elevation={0}
             className={classes.optionLabel}
@@ -120,7 +120,7 @@ function OptionCard(props) {
                 </Button>
             </div>
         </Paper>
-    </Col>
+    </div>
 
 
 }
