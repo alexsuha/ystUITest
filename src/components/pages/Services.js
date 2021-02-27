@@ -5,6 +5,7 @@ import './Services.css'
 import TradeIn from './TradeIn.js';
 import PaymentMethod from './PaymentMethod';
 import TradeInVehicle from './TradeInVehicle';
+import DeliveryMethod from './DeliveryMethod';
 
 class Service extends Component {
     state = {
@@ -55,7 +56,11 @@ class Service extends Component {
                             onTabChange={this.handleTabChange}
                         />
             case 2:
-                return <h1>Delivery method</h1>
+                return <DeliveryMethod
+                            nextStep={this.nextStep}
+                            tabValue={this.state.step}
+                            onTabChange={this.handleTabChange}
+                        />
             case 3:
                 return <h1>Review Payment</h1>
         }
