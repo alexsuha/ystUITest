@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
-import Paper from '@material-ui/core/Paper';
+import React from 'react';
+import { Row, Col } from 'react-bootstrap';
+import { makeStyles } from '@material-ui/core';
 
 //components
 import OptionCard from '../OptionCard';
@@ -11,84 +11,79 @@ import ServiceTabs from '../ServiceTabs';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 
+const useStyles = makeStyles((theme) => ({
+    body: {
+        backgroundColor: "#e9ecef",
+        display: 'flex',
+        flexDirection: 'column',
+        paddingLeft: 32,
+        paddingRight: 32,
+        paddingTop: 10
+    },
 
-class PaymentMethod extends Component {
-    constructor(props) {
-        super(props);
+    title: {
+        fontSize: 14,
+        marginBottom: 8
+    },
+
+    cardContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        height: "100vh"
     }
+}));
 
-    render() {
-        const cashAndFinance = {
-            backgroundColor: "#e9ecef",
-            display: 'flex',
-            flexDirection: 'column',
-            paddingLeft: 32,
-            paddingRight: 32,
-            paddingTop: 10
-        };
 
-        const cardStyle = {
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-            borderRadius: 10,
-            padding: 20,
-            borderStyle: "solid",
-            borderWidth: 3,
-            borderColor: "#009de0",
-            height: 470,
-            width: 370,
-            marginLeft: 16,
-            marginRight: 16
-        }
 
-        const financeDescription = [
-            { id: 0, value: "Eligible for no payments for up to 90 days" },
-            { id: 1, value: "Loans provided by Canada's largest banks" },
-            { id: 2, value: "Lowest interest rates available" },
-            { id: 3, value: "Customize your loan's terms from home" },
-            { id: 4, value: "Payback in full at any time with no penalty" }
-        ]
+function PaymentMethod(props) {
+    const { tabValue, onTabChange, nextStep, onPaymentWithFinance } = props;
+    const classes = useStyles();
+    const financeDescription = [
+        { id: 0, value: "Eligible for no payments for up to 90 days" },
+        { id: 1, value: "Loans provided by Canada's largest banks" },
+        { id: 2, value: "Lowest interest rates available" },
+        { id: 3, value: "Customize your loan's terms from home" },
+        { id: 4, value: "Payback in full at any time with no penalty" }
+    ]
 
-        const cashDescription = [
-            { id: 0, value: "Payment by certified cheque or bank draft" }
-        ]
-        return (
-            <div>
-                <ServiceTabs
-                    tabValue={this.props.tabValue}
-                    onTabChange={this.props.onTabChange}
-                />
-                <Row>
-                    <Col md={9} style={cashAndFinance}>
-                        <div style={{ fontSize: 14, marginBottom: 8 }}>What is your payment method? </div>
-                        <div style={{ display: 'flex', justifyContent: 'center', height: "100vh" }}>
-                            <OptionCard
-                                icon={<AccountBalanceIcon style={{ fontSize: 90 }} />}
-                                title="Finance with us"
-                                description={financeDescription}
-                                buttonText="Continue with finance"
-                                onClick={this.props.nextStep}
-                                showLabel={true}
-                            />
-                            <OptionCard
-                                icon={<MonetizationOnIcon style={{ fontSize: 90 }} />}
-                                title="Pay with cash"
-                                description={cashDescription}
-                                buttonText="Continue with cash"
-                                onClick={this.props.nextStep}
-                                showLabel={false}
-                            />
-                        </div>
-                    </Col>
-                    <Col>
-                        <CarSelectionSidebar />
-                    </Col>
-                </Row>
-            </div >
-        );
-    }
+    const cashDescription = [
+        { id: 0, value: "Payment by certified cheque or bank draft" }
+    ]
+
+    return <div>
+        <ServiceTabs
+            tabValue={tabValue}
+            onTabChange={onTabChange}
+        />
+        <Row>
+            <Col md={9} className={classes.body}>
+                <div className={classes.title}>
+                    What is your payment method?
+                </div>
+                <div className={classes.cardContainer}>
+                    <OptionCard
+                        icon={<AccountBalanceIcon style={{ fontSize: 90 }} />}
+                        title="Finance with us"
+                        description={financeDescription}
+                        buttonText="Continue with finance"
+                        onClick={onPaymentWithFinance}
+                        showLabel={true}
+                    />
+                    <OptionCard
+                        icon={<MonetizationOnIcon style={{ fontSize: 90 }} />}
+                        title="Pay with cash"
+                        description={cashDescription}
+                        buttonText="Continue with cash"
+                        onClick={nextStep}
+                        showLabel={false}
+                    />
+                </div>
+            </Col>
+            <Col>
+                <CarSelectionSidebar />
+            </Col>
+        </Row>
+    </div >
 }
 
 export default PaymentMethod;
