@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, makeStyles } from '@material-ui/core';
-import { Col, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 const useStyles = makeStyles((theme) => ({
     col: {
@@ -104,7 +104,7 @@ function OptionCard(props) {
                 </div>
                 <div>
                     {description.map((item) => (
-                        <div className={classes.description}>
+                        <div className={classes.description} key={item.id}>
                             <span key={item.id} style={{ fontSize: 14 }}>{item.value}</span>
                         </div>
                     ))}
