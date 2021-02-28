@@ -4,17 +4,17 @@ import CarSelectionSidebar from '../CarSelectionSidebar.js'
 import ServiceTabs from '../ServiceTabs.js';
 
 class TradeIn extends Component {
-    state = {  }
+    state = {}
 
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
 
-    render() { 
+    render() {
 
-        return ( 
-            <div style={{minHeight: "100vh"}}>
+        return (
+            <div style={{ minHeight: "100vh" }}>
                 <ServiceTabs
                     tabValue={this.props.tabValue}
                     onTabChange={this.props.onTabChange}
@@ -22,23 +22,24 @@ class TradeIn extends Component {
                 <Row style={{ height: "100vh" }}>
                     <Col md={9} style={{ backgroundColor: "#e9ecef" }}>
                         <div className="trade-in-container">
-                            <div style={{paddingBottom: 20}}>
+                            <div style={{ paddingBottom: 20 }}>
                                 <h4>Save time and money by selling us your old car as part of your purchase</h4>
                             </div>
-                            <div style={{display: "flex", justifyContent: "center", flexDirection: "column", width: 300}}>
-                                <div style={{marginBottom: 10}}>We make you a firm offer</div>
-                                <div style={{marginBottom: 10}}>Reduce your car payments</div>
-                                <div style={{marginBottom: 10}}>Get tax savings</div>
+                            <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: 300 }}>
+                                <div style={{ marginBottom: 10 }}>We make you a firm offer</div>
+                                <div style={{ marginBottom: 10 }}>Reduce your car payments</div>
+                                <div style={{ marginBottom: 10 }}>Get tax savings</div>
                                 <div>Effortless process</div>
                                 <br />
-                                <Button 
+                                <Button
                                     variant="primary"
                                     size="lg"
-                                    onClick={this.onClickTradeInVehicle}>
+                                    onClick={this.props.onTradeIn}
+                                >
                                     Get offer
                                 </Button>
                                 <br />
-                                <Button 
+                                <Button
                                     variant="outline-primary"
                                     size="lg"
                                     onClick={this.continue}>
@@ -55,5 +56,5 @@ class TradeIn extends Component {
         );
     }
 }
- 
+
 export default TradeIn;
