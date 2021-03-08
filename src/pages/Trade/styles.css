@@ -1,0 +1,11 @@
+.atFrameContainer {
+    position: relative;
+    border: none;
+}
+
+.atFrameContainer .atFrame {
+    width: 100%;
+    position: relative;
+    height: 1100px; 
+    border: none;
+}

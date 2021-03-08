@@ -1,0 +1,6 @@
+.aboutus {
+    padding: 70px 0;
+    background-image: url(../../static/aboutus-background1.png);
+    min-height: 100vw;
+    background-size: 100% 100%;
+}

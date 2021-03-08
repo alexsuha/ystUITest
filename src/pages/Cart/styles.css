@@ -1,0 +1,52 @@
+.quantity {
+  float: left;
+  margin-right: 15px;
+  background-color: #eee;
+  position: relative;
+  width: 60px;
+  overflow: hidden;
+  height: 40px;
+}
+
+.quantity .minus,
+.quantity .plus {
+  line-height: 10px;
+  background-clip: padding-box;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-background-size: 6px 30px;
+  -moz-background-size: 6px 30px;
+  color: #bbb;
+  font-size: 20px;
+  position: absolute;
+  height: 50%;
+  border: 0;
+  right: 0;
+  padding: 0;
+  width: 25px;
+  z-index: 3;
+}
+
+.quantity .minus:hover,
+.quantity .plus:hover {
+  background-color: #dad8da;
+}
+
+.quantity .minus {
+  bottom: 0;
+}
+.shopping-cart {
+  margin-top: 20px;
+}
+
+.cart-img-obj-fit {
+  object-fit: cover;
+}
+
+.quantity-number {
+  font-size: 20px;
+  position: absolute;
+  left: 32%;
+  top: 12%;
+}
