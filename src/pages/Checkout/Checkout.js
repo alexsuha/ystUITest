@@ -5,7 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-const PUBLISHABLE_KEY='pk_live_51HyIIPJwv58HY3aFRrKcMcJlTkgEFji13To8G1jfB2JkVX27Yv6PKwaVh6YyCtA7462ZhaqEtgCMNB2yF2WfXOHR00Lf4YuouD';
+const PUBLISHABLE_KEY='pk_test_51HyIIPJwv58HY3aFvDwGAeIlpLU53ZWTiT3vy4va1TlFSbd4ZrRHtYk6MZfOIQ2i5HI1UVChx0D9Y1i7f5KJkB57003JhRjurT';
 const stripePromise = loadStripe(PUBLISHABLE_KEY);
 
 const Checkout = ({
